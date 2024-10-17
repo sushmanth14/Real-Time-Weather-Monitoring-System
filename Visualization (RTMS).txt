@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+
+def plot_weather_data(summaries):
+cities = list(summaries.keys())
+avg_temps = [summaries[city]['avg_temp'] for city in cities]
+
+plt.bar(cities, avg_temps)
+plt.title('Average Temperature by City')
+plt.xlabel('Cities')
+plt.ylabel('Average Temperature (°C)')
+plt.show()

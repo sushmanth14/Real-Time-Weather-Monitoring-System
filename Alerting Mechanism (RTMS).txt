@@ -1,0 +1,7 @@
+ALERT_THRESHOLD = 35 # Celsius
+
+def check_alerts(weather_data):
+for city, data in weather_data.items():
+temp = kelvin_to_celsius(data['main']['temp'])
+if temp > ALERT_THRESHOLD:
+print(f"ALERT: {city} has exceeded the temperature threshold: {temp}°C")

@@ -1,0 +1,19 @@
+import requests
+import time
+
+API_KEY = 'your_api_key'
+CITIES = ['Delhi', 'Mumbai', 'Chennai', 'Bangalore', 'Kolkata', 'Hyderabad']
+BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
+
+def fetch_weather_data():
+weather_data = {}
+for city in CITIES:
+response = requests.get(BASE_URL, params={'q': city, 'appid': API_KEY})
+if response.status_code == 200:
+data = response.json()
+weather_data[city] = data
+return weather_data
+
+while True:
+weather_data = fetch_weather_data()
+time.sleep(300) # Fetch every 5 minutes

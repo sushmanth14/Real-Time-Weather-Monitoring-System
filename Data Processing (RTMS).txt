@@ -1,0 +1,20 @@
+def kelvin_to_celsius(kelvin):
+return kelvin - 273.15
+
+def process_weather_data(weather_data):
+daily_summary = {}
+
+for city, data in weather_data.items():
+main = data['main']
+temp = kelvin_to_celsius(main['temp'])
+
+if city not in daily_summary:
+daily_summary[city] = {
+'temps': [],
+'weather_conditions': []
+}
+
+daily_summary[city]['temps'].append(temp)
+daily_summary[city]['weather_conditions'].append(data['weather'][0]['main'])
+
+return daily_summary

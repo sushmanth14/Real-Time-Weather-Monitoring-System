@@ -1,0 +1,17 @@
+def summarize_weather(daily_summary):
+summaries = {}
+
+for city, data in daily_summary.items():
+avg_temp = sum(data['temps']) / len(data['temps'])
+max_temp = max(data['temps'])
+min_temp = min(data['temps'])
+dominant_condition = max(set(data['weather_conditions']), key=data['weather_conditions'].count)
+
+summaries[city] = {
+'avg_temp': avg_temp,
+'max_temp': max_temp,
+'min_temp': min_temp,
+'dominant_condition': dominant_condition
+}
+
+return summaries
